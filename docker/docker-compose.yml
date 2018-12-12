@@ -1,0 +1,33 @@
+version: '3'
+services:
+    mysql:
+        container_name: challenge-mysql-container
+        image: mysql:5.7
+
+        environment:
+            MYSQL_ROOT_PASSWORD: rootpass
+            MYSQL_DATABASE: challenge
+            MYSQL_USER: challenge
+            MYSQL_PASSWORD: challenge
+        ports:
+            - "${MYSQL_PORT}:3306"
+
+
+    node:
+        container_name: challenge-node-container
+        build:
+            context: ../
+            dockerfile: docker/images/node/Dockerfile
+
+        ports:
+            - "${APP_PORT}:80"
+
+        depends_on:
+            - mysql
+
+        volumes:
+            - ../source:/home/app
+
+        environment:
+            - NODE_ENV=development
+
