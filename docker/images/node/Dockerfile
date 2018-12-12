@@ -13,8 +13,7 @@ USER node
 # install dependencies for prod context
 RUN npm install
 
-
-EXPOSE 80
+EXPOSE 1337
 WORKDIR /home/app
 CMD ["/entrypoint.sh"]
 
