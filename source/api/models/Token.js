@@ -9,11 +9,25 @@ module.exports = {
 
   attributes: {
 
-      value:{
-          type: 'string'
-      }
+    // many to one
+    owner: {
+      model: 'user',
+      allowNull: false
+    },
 
+    // the actual token string
+    value:{
+      type: 'string',
+      allowNull: false,
+    }
   },
+
+  // generate the token automatically
+  beforeCreate: function (valuesToSet, proceed) {
+    valuesToSet.value = sails.helpers.random(10);
+
+    return proceed();
+  }
 
 };
 

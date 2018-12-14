@@ -9,6 +9,7 @@
     "@sailshq/lodash": "^3.10.3",
     "@sailshq/socket.io-redis": "^5.2.0",
     "grunt": "1.0.1",
+    "nodemon": "^1.18.8",
     "sails": "^1.1.0",
     "sails-hook-grunt": "^3.1.0",
     "sails-hook-orm": "^2.1.1",
@@ -16,13 +17,16 @@
     "sails-mysql": "^1.0.1"
   },
   "devDependencies": {
-    "@sailshq/eslint": "^4.19.3"
+    "@sailshq/eslint": "^4.19.3",
+    "mocha": "^5.2.0",
+    "supertest": "^3.3.0"
   },
   "scripts": {
     "start": "NODE_ENV=production node app.js",
+    "dev": "nodemon --ignore 'tmp/*' app.js && exit 0",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "eslint . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
-    "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
+    "custom-tests": "mocha --exit test/lifecycle.test.js test/*/*/*.test.js && echo"
   },
   "main": "app.js",
   "repository": {

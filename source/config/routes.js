@@ -33,5 +33,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  'GET /api/v1/user/token':   'user/token/get',
+
+  'POST /api/v1/user/token':   'user/token/post'
+
 
 };

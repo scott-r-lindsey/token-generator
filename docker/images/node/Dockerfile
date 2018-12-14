@@ -5,7 +5,7 @@ COPY source /home/app
 COPY docker/images/node/entrypoint.sh /entrypoint.sh
 
 # install sails globally for convenience
-RUN npm install sails -g
+RUN npm install sails nodemon mocha -g
 
 # drop root permission
 USER node

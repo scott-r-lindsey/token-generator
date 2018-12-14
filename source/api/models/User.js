@@ -10,7 +10,16 @@ module.exports = {
   attributes: {
 
     email:{
-      type: 'string'
+      type: 'string',
+      unique: true,
+      allowNull: false,
+      required: true
+    },
+
+    // one to many
+    tokens: {
+      collection: 'token',
+      via: 'owner'
     }
 
   },

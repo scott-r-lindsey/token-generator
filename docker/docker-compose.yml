@@ -12,6 +12,17 @@ services:
         ports:
             - "${MYSQL_PORT}:3306"
 
+    mysql-test:
+        container_name: challenge-mysql-test-container
+        image: mysql:5.7
+
+        environment:
+            MYSQL_ROOT_PASSWORD: rootpass
+            MYSQL_DATABASE: ${DB_NAME}
+            MYSQL_USER: ${DB_USER}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+        ports:
+            - "${MYSQL_TEST_PORT}:3306"
 
     node:
         container_name: challenge-node-container
